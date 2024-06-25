@@ -1,0 +1,76 @@
+package guessGame;
+class Gamer
+{
+	int number;
+	public void guess()
+	{
+		number=(int)(Math.random()*10);
+	}
+}
+class Game
+{
+    Gamer G1;
+	Gamer G2;
+	Gamer G3;
+	void startGame()
+	{
+		G1 = new Gamer();
+	    G2 = new Gamer();
+		G3 = new Gamer();
+		
+		int guessG1;
+		int guessG2;
+		int guessG3;
+		
+		boolean G1isRight=false;
+		boolean G2isRight=false;
+		boolean G3isRight=false;
+		
+		int target = (int)(Math.random()*10);
+		System.out.println("I am thinking of a number between 0 to 9");
+		while(true)
+		{
+			System.out.println("Number to be Guessed : "+target);
+			G1.guess();
+			G2.guess();
+			G3.guess();
+			guessG1=G1.number;
+			System.out.println("Player One Guess : "+guessG1);
+			guessG2=G2.number;
+			System.out.println("Player Two Guess : "+guessG2);
+			guessG3=G3.number;
+			System.out.println("Player Three Guess : "+guessG3);
+			if(target==guessG1)
+				G1isRight=true;
+			if(target==guessG2)
+				G2isRight=true;
+			if(target==guessG3)
+				G3isRight=true;
+			
+			if(G1isRight || G2isRight || G3isRight)
+			{
+				System.out.println("Congrats! we have a winner");
+				System.out.println("Player one got it right ? "+G1isRight);
+				System.out.println("Player Two got it right ? "+G2isRight);
+				System.out.println("Player Three got it right ? "+G3isRight);
+				System.out.println("Game Over");
+				break;
+			}
+			else
+			{
+				System.out.println("oopss!You have to try Again");
+			}
+		}
+	}
+	
+}
+
+public class GuessingGame {
+
+	public static void main(String[] args) {
+		Game game=new Game();
+		game.startGame();
+
+	}
+
+}
